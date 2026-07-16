@@ -1,0 +1,41 @@
+# Git and local build state
+.git
+.gitignore
+**/build
+install
+runtime
+logs
+*.log
+*.pid
+core
+core.*
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+
+# Backup and editor files
+*.bak
+*.bak_*
+*codexbak*
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Binary outputs and archives
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.zip
+*.tar.gz
+
+# Local secrets
+.env
+.env.*
+*.secret
+secrets

@@ -1,0 +1,33 @@
+name: vllmroute
+
+services:
+  mock:
+    container_name: vllmroute-mock
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: mock-runtime
+      args:
+        JOBS: ${JOBS:-4}
+    image: ${VLLMROUTE_MOCK_IMAGE:-vllmroute:mock}
+    command: ["mock"]
+    network_mode: host
+    volumes:
+      - ./runtime:/opt/vllmroute/runtime
+    profiles: ["mock"]
+
+  real:
+    container_name: vllmroute
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        JOBS: ${JOBS:-4}
+        MINITSDB_SOURCE: ${MINITSDB_SOURCE:-third_party/mini-tsdb}
+    image: ${VLLMROUTE_IMAGE:-vllmroute:latest}
+    command: ["all"]
+    network_mode: host
+    volumes:
+      - ./runtime:/opt/vllmroute/runtime
+    profiles: ["real"]

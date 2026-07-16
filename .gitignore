@@ -1,0 +1,46 @@
+# Build outputs
+build/
+*/build/
+install/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Runtime outputs
+runtime/
+logs/
+*.log
+*.pid
+core
+core.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local configuration and secrets
+.env
+.env.*
+*.local
+*.secret
+secrets/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local backups
+*.bak
+*.bak_*
+*codexbak*
+
+# Optional local third-party source used for Docker real mode
+third_party/mini-tsdb/
+!third_party/.gitkeep

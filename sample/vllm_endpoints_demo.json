@@ -1,0 +1,58 @@
+[
+  {
+    "name": "gpu-a-main",
+    "base_url": "http://<vllm-host-a>:8000",
+    "served_model": "qwen3-8b",
+    "logical_models": [
+      "qwen3-chat",
+      "qwen3-8b"
+    ],
+    "role": "primary",
+    "weight": 100,
+    "max_context_len": 32768,
+    "max_concurrency": 5,
+    "health_path": "/health"
+  },
+  {
+    "name": "gpu-b-overflow",
+    "base_url": "http://<vllm-host-b>:8000",
+    "served_model": "qwen3-8b",
+    "logical_models": [
+      "qwen3-chat",
+      "qwen3-8b"
+    ],
+    "role": "overflow",
+    "weight": 85,
+    "max_context_len": 16384,
+    "max_concurrency": 2,
+    "health_path": "/health"
+  },
+  {
+    "name": "gpu-c-light",
+    "base_url": "http://<vllm-host-c>:8000",
+    "served_model": "qwen3-4b",
+    "logical_models": [
+      "qwen3-chat",
+      "qwen3-4b"
+    ],
+    "role": "fallback",
+    "weight": 70,
+    "max_context_len": 4096,
+    "max_concurrency": 2,
+    "health_path": "/health"
+  },
+  {
+    "name": "gpu-a-coder",
+    "base_url": "http://<vllm-host-a>:8002",
+    "served_model": "qwen2.5-coder-14b",
+    "logical_models": [
+      "qwen-code",
+      "qwen2.5-coder-14b"
+    ],
+    "role": "primary",
+    "weight": 95,
+    "max_context_len": 32768,
+    "max_concurrency": 2,
+    "health_path": "/health"
+  }
+]
